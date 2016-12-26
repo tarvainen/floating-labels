@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width">
+		<title>Api</title>
+		<link rel="stylesheet" href="floater.css">
+	</head>
+
+	<body>
+		<form id="first_form">
+			<input type="text" value="Test" class="floater" floater-id="name1" placeholder="Name">
+			<input type="text" class="floater" floater-id="phone1" placeholder="Phone">
+			<input type="text" class="floater" floater-id="address1" placeholder="Address">
+			<button onclick="return doSomething()">Do something</button>
+		</form>
+		<form id="second_form">
+			<input type="text" value="111" class="floater" floater-id="name" placeholder="Name">
+			<input type="text" class="floater" floater-id="name" placeholder="Phone">
+			<input type="text" class="floater" floater-id="address" placeholder="Address">
+			<button onclick="return doSomething()">Do something</button>
+		</form>
+		<script src="floater.js"></script>
+		<script>
+			var floater = new Floater({
+				formId:document.getElementById('second_form')
+			}).float();
+			function doSomething () {
+				floater.message({
+					id: 'name', // the floater-id selector of the field
+					text: 'The field may not be empty',
+					duration: 3000,
+					type: 'bad' // this is a classname for the message
+				});
+				return false;
+			}
+		</script>
+	</body>
+</html>

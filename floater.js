@@ -3,6 +3,7 @@ function Floater (opts) {
 		class: 'floater',
 		attribute: 'label',
 		usePlaceholder: true,
+		formId: document,
 	};
 
 	this.combineOpts(opts);
@@ -22,7 +23,7 @@ Floater.prototype.combineOpts = function (opts) {
 }
 
 Floater.prototype.getElements = function () {
-	this.elements = document.getElementsByClassName(this.opts.class);
+	this.elements = this.opts.formId.getElementsByClassName(this.opts.class);
 }
 
 Floater.prototype.createElements = function () {
@@ -72,7 +73,7 @@ Floater.prototype.bindEvent = function (element, label) {
 		}
 
 		this.show(label);
-	}).bind(this));
+		}).bind(this));
 
 	element.addEventListener('blur', (function () {
 		if (element.value.length > 0) {
@@ -80,7 +81,7 @@ Floater.prototype.bindEvent = function (element, label) {
 		}
 
 		this.hide(label);
-	}).bind(this));
+		}).bind(this));
 }
 
 Floater.prototype.getText = function (element) {
@@ -123,7 +124,7 @@ Floater.prototype.message = function (opts) {
 
 	textField.addEventListener('keyup', (function () {
 		this.hide(el);
-	}).bind(this));
+		}).bind(this));
 }
 
 Floater.prototype.hide = function (el) {
@@ -136,9 +137,9 @@ Floater.prototype.show = function (el) {
 
 Floater.prototype.escapeHtml = function (html) {
 	return html
-		.replace(/&/g, "&amp;")
-		.replace(/</g, "&lt;")
-		.replace(/>/g, "&gt;")
-		.replace(/"/g, "&quot;")
-		.replace(/'/g, "&#039;");
+	.replace(/&/g, "&amp;")
+	.replace(/</g, "&lt;")
+	.replace(/>/g, "&gt;")
+	.replace(/"/g, "&quot;")
+	.replace(/'/g, "&#039;");
 }
