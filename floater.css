@@ -1,32 +1,97 @@
+input {
+	border-radius: 5px;
+	outline: none;
+	border: 1px solid rgb(180, 240, 240);
+	padding: 5px;
+}
+
+input:focus,
+textarea:focus {
+	border-color: #0074D9;
+	outline: none;
+}
+
 .floater-container {
-
+	margin-top: 10px;
+	width: 200px;
+	position: relative;
 }
 
-.floater-container .floater:focus::-webkit-input-placeholder {
-	opacity: 0 !important;
-}
-
-.floater-container .floater:focus::-moz-placeholder {
-	opacity: 0 !important;
-}
-
-.floater-container .floater:focus:-moz-placeholder {
-	opacity: 0 !important;
-}
-
-.floater-container .floater:focus:-ms-input-placeholder {
-	opacity: 0 !important;
-}
-
-.floater-container .floater-label {
+.floater-label {
+	display: inline;
 	position: absolute;
-	transform: translate(0, -100%);
+	transition: 0.2s;
+	left: 5px;
+	pointer-events: none;
 }
 
-.floater-container .floater-label.hidden {
-	display: none;
+.floater-label.hidden {
+	animation: slideDown 0.4s;
+	transform: translate(0, 50%);
+	color: rgb(160, 240, 200);
 }
 
-.floater-container .floater-label.visible {
+.floater-label.visible {
+	animation: slideUp 0.4s;
+	transform: translate(0, -50%);
+	background-color: white;
+	color: #F88071;
+}
+
+.floater::-webkit-input-placeholder {
+	opacity: 0 !important;
+}
+
+.floater::-moz-placeholder {
+	opacity: 0 !important;
+}
+
+.floater:-moz-placeholder {
+	opacity: 0 !important;
+}
+
+.floater:-ms-input-placeholder {
+	opacity: 0 !important;
+}
+
+.floater-message {
+	position: absolute;
+	display: inline;
+	opacity: 0;
+	right: 5px;
+	transition: 0.3s;
+	font-size: 70%;
+	color: #fff;
 	display: block;
+	padding: 2px;
+	z-index: -1;
+}
+
+.floater-message.hidden {
+	animation: slideDown 0.4s;
+	transform: translate(0, 50%);
+	opacity: 0;
+}
+
+.floater-message.visible {
+	animation: slideUp 0.4s;
+	transform: translate(0, -50%);
+	opacity: 1;
+	z-index: 1;
+}
+
+.floater-message.good {
+	background: #03C03C;
+}
+
+.floater-message.bad {
+	background: #C23B22;
+}
+
+button {
+	outline: none;
+	border: none;
+	background-color: rgb(100, 100, 100);
+	color: white;
+	border-radius: 5px;
 }
